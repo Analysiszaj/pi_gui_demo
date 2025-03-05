@@ -1,0 +1,34 @@
+cmake_minimum_required(VERSION 3.12)
+project(pi_gui_demo)
+set(CMAKE_CXX_STANDARD 17)
+
+# 添加nanovg 子模块
+add_subdirectory(external/nanovg)
+
+# Hello ImGui 绑定
+if(IS_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/external/hello_imgui)
+    add_subdirectory(external/hello_imgui)
+endif()
+
+option(EXAMPLE_INTEGRATION_PORTABLE_INSTALL "Install in a portable way" ON)
+
+if (EXAMPLE_INTEGRATION_PORTABLE_INSTALL)
+    hello_imgui_add_app(${PROJECT_NAME} main.cpp)
+else()
+    set(HELLOIMGUI_ADD_APP_WITH_INSTALL OFF CACHE BOOL "" FORCE)
+    imgui_bundle_add_app(${PROJECT_NAME} main.cpp)
+
+    if (NOT EXAMPLE_INTEGRATION_PORTABLE_INSTALL)
+        include(GNUInstallDirs)
+        install(TARGETS ${PROJECT_NAME} DESTINATION ${CMAKE_INSTALL_BINDIR})
+        set(assets_install_dir ${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME})
+        if (NOT IS_ABSOLUTE ${assets_install_dir})
+            set(assets_install_dir ${CMAKE_INSTALL_PREFIX}/${assets_install_dir})
+        endif()
+        install(DIRECTORY assets DESTINATION ${assets_install_dir})
+        target_compile_definitions(imgui_bundle_example_integration PRIVATE ASSETS_LOCATION="${assets_install_dir}/assets")
+    endif()
+endif()
+
+target_link_libraries(${PROJECT_NAME} PRIVATE nanovg)
+
