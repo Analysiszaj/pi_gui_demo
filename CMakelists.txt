@@ -10,6 +10,8 @@ if(IS_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/external/hello_imgui)
     add_subdirectory(external/hello_imgui)
 endif()
 
+# ImVg 绑定
+
 option(EXAMPLE_INTEGRATION_PORTABLE_INSTALL "Install in a portable way" ON)
 
 if (EXAMPLE_INTEGRATION_PORTABLE_INSTALL)
@@ -31,4 +33,9 @@ else()
 endif()
 
 target_link_libraries(${PROJECT_NAME} PRIVATE nanovg)
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/external/nanovg/src)
 
+
+file(GLOB_RECURSE nvg_imgui_sources external/nvg_imgui/*.cpp external/nvg_imgui/*.h)
+target_sources(${PROJECT_NAME} PRIVATE ${nvg_imgui_sources})
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/external/nvg_imgui)
