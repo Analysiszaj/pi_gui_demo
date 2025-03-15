@@ -1,2 +1,3 @@
 build
-external/**/*
+imgui_version/build
+nanovg_version/build
