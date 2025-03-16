@@ -1,3 +1,8 @@
 build
+<<<<<<< HEAD
 external/**/*
 .vscode
+=======
+imgui_version/build
+nanovg_version/build
+>>>>>>> 1e112d5432d2c12bd71d6ba2b9eceb00bdfa4a15
