@@ -136,7 +136,6 @@ int main(int, char **)
   AppStateNvgHeart appState;
 
   HelloImGui::RunnerParams runnerParams;
-  runnerParams.imGuiWindowParams.defaultImGuiWindowType = HelloImGui::DefaultImGuiWindowType::NoDefaultWindow;
 
   runnerParams.callbacks.EnqueuePostInit([&]()
                                          { appState.Init(); });
