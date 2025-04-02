@@ -8,10 +8,10 @@ void Gui::render() {
     ImGui::PushFont(default_font->font);
 
     render_header();
-    // render_content();
-    // render_footer();
+    render_content();
+    render_footer();
 
-    main_gui.render();
+    // main_gui.render();
 
     ImGui::PopFont();
 }
