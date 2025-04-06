@@ -1,6 +1,6 @@
 on: push 
 
-jobs:
+jobs1:
   runs-on: ubuntu-latest
   steps:
   - run: pwd
