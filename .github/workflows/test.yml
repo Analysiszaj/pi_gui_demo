@@ -13,5 +13,5 @@ jobs:
         cd imgui_version
         cmake ..
         cd build 
-        make -j4
-           
+        make .. -j4
+
