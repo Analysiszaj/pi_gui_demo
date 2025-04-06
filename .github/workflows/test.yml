@@ -11,7 +11,10 @@ jobs:
         submodules: true
 
     - name: 安装环境
-      run: sudo apt install -y libglfw3-dev
+      run: | 
+        sudo apt update
+        sudo apt install -y libglfw3-dev
+        sudo apt install -y libfreetype6-dev
 
     - name: 打包构建
       run: |
