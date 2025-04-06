@@ -7,6 +7,8 @@ jobs:
     steps:
     - name: 读取仓库内容
       uses: actions/checkout@v4
+      with:
+        submodules: true
 
     - name: 打包构建
       run: |
