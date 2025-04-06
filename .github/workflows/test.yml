@@ -10,6 +10,9 @@ jobs:
       with:
         submodules: true
 
+    - name: 安装环境
+      run: sudo apt install -y libglfw3-dev
+
     - name: 打包构建
       run: |
         cd imgui_version
