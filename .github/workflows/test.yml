@@ -11,7 +11,8 @@ jobs:
     - name: 打包构建
       run: |
         cd imgui_version
-        cmake
+        mkdir build
         cd build 
+        cmake ..
         make -j4
 
