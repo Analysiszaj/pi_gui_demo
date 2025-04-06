@@ -9,9 +9,9 @@ jobs:
       uses: actions/checkout@v4
 
     - name: 打包构建
-      run: 
+      run: |
         cd imgui_version
         cmake ..
         cd build 
-        make .. -j4
+        make -j4
 
