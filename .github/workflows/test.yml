@@ -3,11 +3,15 @@ on: push
 jobs:
   jobs1:
     runs-on: ubuntu-latest
+    
     steps:
-    - run: pwd
-    - run: ls
+    - name: 读取仓库内容
+      uses: actions/checkout@v4
 
-  jobs2:
-    runs-on: window-latest
-    steps:
-    - run: node --version
+    - name: 打包构建
+      run: 
+        cd imgui_version
+        cmake ..
+        cd build 
+        make -j4
+           
